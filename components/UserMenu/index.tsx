@@ -1,13 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import MenuItem from "../MenuItem";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [LoginInDialogOpen, setLoginInDialogOpen] = useState(false);
@@ -33,7 +32,6 @@ const UserMenu = () => {
                 <DialogTrigger className="text-left">
                   <MenuItem label="Login" />
                 </DialogTrigger>
-                <MenuItem label="Sign up" />
               </>
             </div>
           </div>
@@ -41,26 +39,38 @@ const UserMenu = () => {
       </div>
       <DialogContent className="sm:max-w-[425px] p-[0.6rem]">
         <DialogHeader>
-          <DialogTitle className="text-center text-lg font-semibold">Hello World</DialogTitle>
-          <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+          <DialogTitle className="text-center text-lg font-semibold">Register</DialogTitle>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
+        <div className="text-xl font-semibold">Welcome to Airbnb</div>
+        <div className="font-light text-neutral-500">Create an account!</div>
+        <div className="grid gap-4">
+          <div>
+            <Input type="email" id="email" placeholder="Your email" />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" defaultValue="@peduarte" className="col-span-3" />
+          <div>
+            <Input type="text" id="name" placeholder="Your name" />
+          </div>
+          <div>
+            <Input type="password" id="password" placeholder="Your password" />
           </div>
         </div>
         <DialogFooter className="flex flex-col gap-2 p-6">
-          <div className="flex flex-row items-center gap-4 w-full">
-            <Button className="relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg  transition w-full text-white py-3 text-base font-semibold border-[2px]">Submit</Button>
+          <div className="flex flex-col items-center gap-4 w-full">
+            <Button className="w-full font-bold">Continue</Button>
+            <Button variant="outline" className="rounded-lg transition w-full py-3 text-base font-semibold border-[2px]">
+              <FcGoogle className="mr-2" size={20} />
+              Continue with Google
+            </Button>
+            <Button variant="outline" className="rounded-lg  transition w-full py-3 text-base font-semibold border-[2px]">
+              <AiFillGithub className="mr-2" size={20} />
+              Continue with Github
+            </Button>
+            <div className="flex justify-center flex-row items-center gap-2 text-neutral-500 font-light text-sm">
+              <div>Already have an account?</div>
+              <Button className="p-0" variant="link">
+                Login
+              </Button>
+            </div>
           </div>
         </DialogFooter>
       </DialogContent>
