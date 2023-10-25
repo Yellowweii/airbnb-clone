@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { AiOutlineMenu, AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
@@ -9,8 +9,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [LoginInDialogOpen, setLoginInDialogOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { email, name, password } = e.target as typeof e.target & {
+      email: { value: string };
+      name: { value: string };
+      password: { value: string };
+    };
+    fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email.value,
+        name: name.value,
+        password: password.value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
   return (
     <Dialog>
       <div className="relative">
@@ -43,7 +61,7 @@ const UserMenu = () => {
         </DialogHeader>
         <div className="text-xl font-semibold">Welcome to Airbnb</div>
         <div className="font-light text-neutral-500">Create an account!</div>
-        <div className="grid gap-4">
+        <form onSubmit={handleSubmit} className="grid gap-4">
           <div>
             <Input type="email" id="email" placeholder="Your email" />
           </div>
@@ -53,10 +71,14 @@ const UserMenu = () => {
           <div>
             <Input type="password" id="password" placeholder="Your password" />
           </div>
-        </div>
-        <DialogFooter className="flex flex-col gap-2 p-6">
+          <div className="px-6 pt-4">
+            <Button className="w-full font-bold" type="submit">
+              Continue
+            </Button>
+          </div>
+        </form>
+        <DialogFooter className="flex flex-col gap-2 p-6 pt-0">
           <div className="flex flex-col items-center gap-4 w-full">
-            <Button className="w-full font-bold">Continue</Button>
             <Button variant="outline" className="rounded-lg transition w-full py-3 text-base font-semibold border-[2px]">
               <FcGoogle className="mr-2" size={20} />
               Continue with Google
