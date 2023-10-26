@@ -1,5 +1,5 @@
 "use client";
-import React, { MouseEventHandler, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineMenu, AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
@@ -7,10 +7,16 @@ import MenuItem from "../MenuItem";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
-  const handleSubmit = (e: React.FormEvent) => {
+  const router = useRouter();
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     const { email, name, password } = e.target as typeof e.target & {
       email: { value: string };
@@ -28,6 +34,28 @@ const UserMenu = () => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+  };
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { email, password } = e.target as typeof e.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+    signIn("credentials", {
+      data: {
+        email: email.value,
+        password: password.value,
+      },
+      redirect: false,
+    }).then((callback) => {
+      if (callback?.ok) {
+        toast.success("Logged in successfully");
+        router.refresh();
+      }
+      if (callback?.error) {
+        toast.error(callback.error);
+      }
+    });
   };
   return (
     <Dialog>
@@ -57,17 +85,19 @@ const UserMenu = () => {
       </div>
       <DialogContent className="sm:max-w-[425px] p-[0.6rem]">
         <DialogHeader>
-          <DialogTitle className="text-center text-lg font-semibold">Register</DialogTitle>
+          <DialogTitle className="text-center text-lg font-semibold">{isLogin ? "Login" : "Register"}</DialogTitle>
         </DialogHeader>
-        <div className="text-xl font-semibold">Welcome to Airbnb</div>
-        <div className="font-light text-neutral-500">Create an account!</div>
-        <form onSubmit={handleSubmit} className="grid gap-4">
+        <div className="text-xl font-semibold">{isLogin ? "Welcome back" : "Welcome to Airbnb"}</div>
+        <div className="font-light text-neutral-500">{isLogin ? "Login to your account!" : "Create an account!"}</div>
+        <form autoComplete="off" onSubmit={isLogin ? handleLogin : handleRegister} className="grid gap-4">
           <div>
             <Input type="email" id="email" placeholder="Your email" />
           </div>
-          <div>
-            <Input type="text" id="name" placeholder="Your name" />
-          </div>
+          {isLogin ? null : (
+            <div>
+              <Input type="text" id="name" placeholder="Your name" />
+            </div>
+          )}
           <div>
             <Input type="password" id="password" placeholder="Your password" />
           </div>
@@ -89,7 +119,7 @@ const UserMenu = () => {
             </Button>
             <div className="flex justify-center flex-row items-center gap-2 text-neutral-500 font-light text-sm">
               <div>Already have an account?</div>
-              <Button className="p-0" variant="link">
+              <Button onClick={() => setIsLogin(true)} className="p-0" variant="link">
                 Login
               </Button>
             </div>

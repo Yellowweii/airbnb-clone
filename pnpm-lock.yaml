@@ -47,6 +47,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+  react-hot-toast:
+    specifier: ^2.4.1
+    version: registry.npmmirror.com/react-hot-toast@2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
   react-icons:
     specifier: ^4.11.0
     version: registry.npmmirror.com/react-icons@4.11.0(react@18.2.0)
@@ -1203,6 +1206,17 @@ packages:
       once: registry.npmmirror.com/once@1.4.0
       path-is-absolute: registry.npmmirror.com/path-is-absolute@1.0.1
 
+  registry.npmmirror.com/goober@2.1.13(csstype@3.1.2):
+    resolution: {integrity: sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/goober/-/goober-2.1.13.tgz}
+    id: registry.npmmirror.com/goober/2.1.13
+    name: goober
+    version: 2.1.13
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: registry.npmmirror.com/csstype@3.1.2
+    dev: false
+
   registry.npmmirror.com/graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/graceful-fs/-/graceful-fs-4.2.11.tgz}
     name: graceful-fs
@@ -1796,6 +1810,58 @@ packages:
     dependencies:
       '@prisma/engines': registry.npmmirror.com/@prisma/engines@5.5.0
 
+  registry.npmmirror.com/preact-render-to-string@5.2.3(preact@10.11.3):
+    resolution: {integrity: sha512-aPDxUn5o3GhWdtJtW0svRC2SS/l8D9MAgo2+AWml+BhDImb27ALf04Q2d+AHqUUOc6RdSXFIBVa2gxzgMKgtZA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/preact-render-to-string/-/preact-render-to-string-5.2.3.tgz}
+    id: registry.npmmirror.com/preact-render-to-string/5.2.3
+    name: preact-render-to-string
+    version: 5.2.3
+    peerDependencies:
+      preact: '>=10'
+    dependencies:
+      preact: registry.npmmirror.com/preact@10.11.3
+      pretty-format: registry.npmmirror.com/pretty-format@3.8.0
+    dev: false
+
+  registry.npmmirror.com/preact-render-to-string@5.2.6(preact@10.18.1):
+    resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/preact-render-to-string/-/preact-render-to-string-5.2.6.tgz}
+    id: registry.npmmirror.com/preact-render-to-string/5.2.6
+    name: preact-render-to-string
+    version: 5.2.6
+    peerDependencies:
+      preact: '>=10'
+    dependencies:
+      preact: registry.npmmirror.com/preact@10.18.1
+      pretty-format: registry.npmmirror.com/pretty-format@3.8.0
+    dev: false
+
+  registry.npmmirror.com/preact@10.11.3:
+    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/preact/-/preact-10.11.3.tgz}
+    name: preact
+    version: 10.11.3
+    dev: false
+
+  registry.npmmirror.com/preact@10.18.1:
+    resolution: {integrity: sha512-mKUD7RRkQQM6s7Rkmi7IFkoEHjuFqRQUaXamO61E6Nn7vqF/bo7EZCmSyrUnp2UWHw0O7XjZ2eeXis+m7tf4lg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/preact/-/preact-10.18.1.tgz}
+    name: preact
+    version: 10.18.1
+    dev: false
+
+  registry.npmmirror.com/pretty-format@3.8.0:
+    resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pretty-format/-/pretty-format-3.8.0.tgz}
+    name: pretty-format
+    version: 3.8.0
+    dev: false
+
+  registry.npmmirror.com/prisma@5.5.0:
+    resolution: {integrity: sha512-QyMMh1WQiGU07Iz3Q8jd6y5KlomGLDVb4etkMWpQ4EmDAaY+zGgNHmBk2MfRPb0A+un1Ior1nZWZorfnKD6E5A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/prisma/-/prisma-5.5.0.tgz}
+    name: prisma
+    version: 5.5.0
+    engines: {node: '>=16.13'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': registry.npmmirror.com/@prisma/engines@5.5.0
+
   registry.npmmirror.com/queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/queue-microtask/-/queue-microtask-1.2.3.tgz}
     name: queue-microtask
@@ -1814,6 +1880,23 @@ packages:
       scheduler: registry.npmmirror.com/scheduler@0.23.0
     dev: false
 
+  registry.npmmirror.com/react-hot-toast@2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-hot-toast/-/react-hot-toast-2.4.1.tgz}
+    id: registry.npmmirror.com/react-hot-toast/2.4.1
+    name: react-hot-toast
+    version: 2.4.1
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      goober: registry.npmmirror.com/goober@2.1.13(csstype@3.1.2)
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
+    dev: false
+
   registry.npmmirror.com/react-icons@4.11.0(react@18.2.0):
     resolution: {integrity: sha512-V+4khzYcE5EBk/BvcuYRq6V/osf11ODUM2J8hg2FDSswRrGvqiYUYPRy4OdrWaQOBj4NcpJfmHZLNaD+VH0TyA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-icons/-/react-icons-4.11.0.tgz}
     id: registry.npmmirror.com/react-icons/4.11.0
@@ -1824,7 +1907,7 @@ packages:
     dependencies:
       react: registry.npmmirror.com/react@18.2.0
     dev: false
-    
+
   registry.npmmirror.com/react-remove-scroll-bar@2.3.4(@types/react@18.2.31)(react@18.2.0):
     resolution: {integrity: sha512-63C4YQBUt0m6ALadE9XV56hV8BgJWDmmTPY758iIJjfQKt2nYwoUrPk0LXRXcB/yIj82T1/Ixfdpdk68LwIB0A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.4.tgz}
     id: registry.npmmirror.com/react-remove-scroll-bar/2.3.4
