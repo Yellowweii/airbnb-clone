@@ -5,8 +5,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/lib/prismadb";
 import bcrypt from "bcrypt";
+import nextAuth from "next-auth";
 
-export const authOptions: AuthOptions = {
+export default nextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     GitHubProvider({
@@ -18,13 +19,14 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     CredentialsProvider({
-      name: "Credentials",
+      name: "credentials",
       credentials: {
         email: { label: "email", type: "text" },
         password: { label: "password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
+          console.log("没有写入email或者password");
           throw new Error("Invalid credentials");
         }
         const user = await prisma.user.findUnique({
@@ -33,10 +35,12 @@ export const authOptions: AuthOptions = {
           },
         });
         if (!user || !user?.hashedPassword) {
+          console.log("没有找到用户或者密码");
           throw new Error("Invalid credentials");
         }
         const isValid = await bcrypt.compare(credentials.password, user.hashedPassword);
         if (!isValid) {
+          console.log("密码不正确");
           throw new Error("Invalid credentials");
         }
         return user;
@@ -51,8 +55,4 @@ export const authOptions: AuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
-};
-
-export default NextAuth(authOptions);
-
-export {authOptions as GET, authOptions as POST}
+});
